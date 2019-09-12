@@ -1,0 +1,63 @@
+<ion-content >
+  <ion-grid style="padding: 0; margin: 0;">
+    <ion-row  >
+      <ion-col size-sm="8" size-xs="12"  style="padding: 0; margin: 0;">
+        <div class="login-header-container">
+          <img  class="logo" src="assets/imgs/logo.png">
+          <p class="logo-header-txt">My Notes</p>
+          <p class="login-header-txt" >Login</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size-sm="8" size-xs="12">
+        <form [formGroup]="loginForm" > 
+          <div class="justify-content-center login-container" >
+              <div class="form-group input-container">
+                <ion-grid class="input-wrapper">
+                    <ion-icon class="input-icon" name="mail"></ion-icon>
+                    <input class="input-txt" formControlName="email" type="email" placeholder="Email-id">
+                </ion-grid>
+              </div>
+                <!-- Error Message for email-->
+              <div class="error-messages">
+                <ng-container *ngFor="let error of error_message.email">
+                  <span class="error-message" *ngIf="loginForm.get('email').hasError(error.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                    {{ error.message }}
+                  </span>
+                </ng-container>
+              </div>
+              <div class="form-group input-container">
+                <ion-grid class="input-wrapper">
+                  <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon>
+                  <input formControlName="password"  [type]="showPassword ? 'text' : 'password'" clearOnEdit="false" placeholder="Enter your password" class="input-txt">
+                  <button ion-button class="pass-btn" (click)="onPasswordToggle()">
+                    <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="input-icon" ></ion-icon>
+                  </button>
+                </ion-grid>
+              </div> 
+                <!-- Error Message for password-->
+              <div class="error-messages">
+                  <ng-container *ngFor="let error of error_message.password">
+                    <span class="error-message" *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                      {{ error.message }}
+                    </span>
+                  </ng-container>
+              </div>
+              <p ><a class="ion-margin-bottom link-txt" (click)="forgotPassword()" style="float: right; margin-right: 2%; margin-top: 5px; margin-bottom: 45px;">Forgot Password</a></p>
+              <button ion-button class="ion-margin-bottom round-button btn-txt"  type="submit" (click)="login()" text-center shape="round">LOGIN</button>
+          </div> 
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <ion-row>
+      <ion-col size-sm="8" size-xs="12">
+        <div class="auth-footer">
+          <p class="link-txt" text-center>Create new account,&nbsp;<a (click)="register()" style="color: #f1c40f;">Register</a>&nbsp;here.</p>
+        </div>
+      </ion-col>
+    </ion-row>
+</ion-content>

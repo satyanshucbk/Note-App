@@ -1,0 +1,80 @@
+
+<ion-content>
+    <ion-grid style="padding: 0; margin: 0;">
+        <ion-row>
+            <ion-col size-sm="12" style="padding: 0; margin: 0;">
+                <div class="auth-header-container">
+                    <!-- <ion-icon slot="start" (click)="backToLogin()" class="header-icon" name="arrow-round-back"></ion-icon> -->
+                    <p class= "text-center page-header-txt" style="top: 16%; left:41%; ">Sign Up</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-row >
+        <ion-col size-sm="12" >
+            <form [formGroup]="registerForm" > 
+            <div class="justify-content-center login-container">
+                <div class="form-group ion-margin-bottom input-container">
+                    <ion-grid class="input-wrapper">
+                        <ion-icon class="input-icon" name="person"></ion-icon>
+                        <input formControlName="userName" class="form-control input-txt" type="text" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
+                    </ion-grid>
+                </div>
+                <div *ngIf="submitted && f.userName.errors" class="error-messages">
+                    <span *ngIf="f.userName.errors.required">*Username is required</span>
+                </div>
+        
+                <div class="form-group ion-margin-bottom input-container">
+                    <ion-grid class="input-wrapper">
+                        <ion-icon class="input-icon" name="mail"></ion-icon>
+                        <input formControlName= "email" class="form-control input-txt" type="email" placeholder="Email-id" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    </ion-grid>
+                </div>
+                <div *ngIf="submitted && f.email.errors" class="error-messages">
+                    <span *ngIf="f.email.errors.required">*Email is required</span>
+                    <span *ngIf="f.email.errors.email">*Email must be a valid email address</span>
+                </div>
+                
+                <div class="form-group ion-margin-bottom input-container">
+                    <ion-grid class="input-wrapper">
+                        <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon>
+                        <input formControlName= "password" class="form-control input-txt" [type]="showPassword ? 'text' : 'password'" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                        <button ion-button class="pass-btn" (click)="onPasswordToggle('password')">
+                            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="input-icon" ></ion-icon>
+                        </button>
+                        </ion-grid>
+                </div>
+                <div *ngIf="submitted && f.password.errors" class="error-messages">
+                    <span *ngIf="f.password.errors.required">*Password is required</span>
+                    <span *ngIf="f.password.errors.minlength">*Password must be at least 6 characters</span>
+                </div> 
+                <div class="form-group ion-margin-bottom input-container">
+                    <ion-grid class="input-wrapper">
+                        <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon>
+                        <input formControlName="confirmPassword" class="form-control input-txt" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" >
+                        <button ion-button class="pass-btn" (click)="onPasswordToggle('confirmPassword')">
+                            <ion-icon [name]="showConfirmPassword ? 'eye-off' : 'eye'" class="input-icon" ></ion-icon>
+                        </button>
+                    </ion-grid>
+                </div> 
+                <div *ngIf="submitted && f.confirmPassword.errors" class="error-messages">
+                    <span *ngIf="f.confirmPassword.errors.required">*Confirm Password is required</span>
+                    <span *ngIf="f.confirmPassword.errors.mustMatch">*Passwords must match</span>
+                </div>
+                <div class="form-group btn-wrapper">
+                    <button class="round-button item-txt" (click)="signUp()" style="margin-top: 10%"
+                        text-center shape="round"><span style="text-align: center">SIGN UP</span>
+                    </button>
+                </div>
+                </div>
+            </form>
+        </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+        <ion-col size-sm="12" >
+            <div class="ion-text-center">
+                <p class="link-txt">Already have an account,&nbsp;<a (click)="goToLogin()" style="color: #f1c40f;">Login</a>&nbsp;here.</p>
+            </div>    
+        </ion-col>
+    </ion-row>
+</ion-content>

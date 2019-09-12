@@ -1,0 +1,7 @@
+{
+  "name": "NotesApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

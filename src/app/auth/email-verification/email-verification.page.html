@@ -1,0 +1,37 @@
+
+
+<ion-content>
+    <ion-grid style="padding: 0; margin: 0;">
+        <ion-row>
+            <ion-col size-sm="8" style="padding: 0; margin: 0;">
+                <div class="auth-header-container">
+                    <ion-icon slot="start" (click)="back()" class="header-icon" name="arrow-round-back"></ion-icon>
+                    <p class= "text-center page-header-txt">Email Verification</p>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+            <ion-col size-sm="8" >
+                <div class="justify-content-center login-container">
+                    <div class="ion-text-center info-txt">
+                        <p class="ion-text-nowrap"><span>We have sent verification code to your email.</span></p>
+                        <p class="ion-text-nowrap"><span>Please enter the verification code below.</span></p>
+                    </div>
+                    <div class="otp-container">
+                        <input maxlength="1" type="number" placeholder="0" tabindex="1" (keyup)="moveFocus(b)" class="otp-input">
+                        <input maxlength="1" type="number" placeholder="0" tabindex="2" #b (keyup)="moveFocus(c)"  class="otp-input">
+                        <input maxlength="1" type="number" placeholder="0" tabindex="3" #c (keyup)="moveFocus(d)" class="otp-input">
+                        <input maxlength="1" type="number" placeholder="0"  tabindex="4" #d  class="otp-input">
+                    </div>
+                    <p ><a class="ion-margin-bottom link-txt" style="float: right; margin-right: 15%; margin-bottom: 60px;">Resend OTP</a></p>
+                    <div class="btn-wrapper" style="position: relative;">
+                        <button class="round-button item-txt" (click)="verifyCode()" 
+                            text-center shape="round" style="position: absolute; 
+                            top: 150px; right: 3px;"><span style="text-align: center">VERIFY</span>
+                        </button>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
