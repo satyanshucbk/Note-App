@@ -22,6 +22,17 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+        document.addEventListener('backbutton', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log('Can`t go back');
+        }, false);
+        // navigator['app'].exitApp();
+       
+      });
+     
+      this.statusBar.styleDefault();
     });
   }
 }

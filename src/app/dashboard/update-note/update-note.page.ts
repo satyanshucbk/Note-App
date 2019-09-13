@@ -33,8 +33,8 @@ export class UpdateNotePage implements OnInit {
     this.route.params.subscribe(params => {
       let id = +params.id;
      let note = this.noteService.editNote(id);
+     
      this.updateForm.patchValue({id:id, title : note.title,description :note.desc})
-    //  this.router.navigate(['note-list']);
     
     });
   }

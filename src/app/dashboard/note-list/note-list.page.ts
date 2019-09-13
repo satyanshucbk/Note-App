@@ -4,6 +4,8 @@ import { NoteServiceService } from '../../services/note-service.service';
 import { AlertController } from '@ionic/angular';
 
 
+
+
 @Component({
   selector: 'app-note-list',
   templateUrl: './note-list.page.html',
@@ -24,9 +26,10 @@ export class NoteListPage implements OnInit {
   
   constructor(public router: Router,
               private noteService: NoteServiceService,
-              public alertController: AlertController) { }
+              public alertController: AlertController,
+              ) { }
 
-             
+
 
   ngOnInit() {
 
@@ -58,4 +61,6 @@ export class NoteListPage implements OnInit {
   localStorage.setItem('note',JSON.stringify(sortNote));
   this.getList();
   }
+
+  
 }

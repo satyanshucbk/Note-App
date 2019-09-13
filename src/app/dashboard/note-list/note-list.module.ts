@@ -19,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,FormsModule,
     IonicModule,
+    // IonicModule.forRoot({hardwareBackButton: false}),
     RouterModule.forChild(routes)
   ],
   declarations: [NoteListPage,CustomPipe ]

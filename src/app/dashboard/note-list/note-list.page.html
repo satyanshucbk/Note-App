@@ -1,15 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <div class="dashboard-header-container">
+            <ion-grid class="searchbar-container">
+                <ion-icon class="searchbar-icon" name="search"></ion-icon>
+                <input [(ngModel)]="searchText" class="searchbar-input" type="text" placeholder="Search notes"> 
+            </ion-grid>
+            <!-- <button class="ion-float-right ion-margin">
+                <ion-icon name="log-out"></ion-icon>
+            </button> -->
+        </div>
+    </ion-toolbar>
+  </ion-header>
+
 <ion-content>
 
-    <ion-row>
+    <!-- <ion-row>
         <ion-col size-sm="12" style="padding: 0; margin: 0;">
             <div class="dashboard-header-container">
                 <ion-grid class="searchbar-container">
                     <ion-icon class="searchbar-icon" name="search"></ion-icon>
                     <input [(ngModel)]="searchText" class="searchbar-input" type="text" placeholder="Search notes"> 
                 </ion-grid>
+
             </div>
+            
         </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
         <ion-col size-sm="12">
             <div class="sort-option">
@@ -23,12 +39,12 @@
             </div>
         </ion-col>
     </ion-row>
-    <ion-grid>
+    <ion-grid style="margin: 5px;">
         <ion-row>
                 <ion-col size="6" *ngFor="let item of noteList | searchfilter : searchText  ; let i=index; ">    
                     <ion-card class="list-card" (click)="updateNote(i)">             
-                        <ion-card-title class="list-card-title" >{{item.title}}</ion-card-title>
-                        <ion-card-content class="list-card-content" >{{item.desc}} </ion-card-content>
+                        <ion-card-title class="list-card-title">{{item.title}}</ion-card-title>
+                        <ion-card-content class="list-card-content">{{item.desc}}</ion-card-content>
                         <ion-grid class="card-footer-wrapper">
                             <ion-card-subtitle class="date" >{{item.todaysDate | date:'medium'}}</ion-card-subtitle>
                             <button (click)= "deleteNote(i)" style="display: block; background: none; border:none;">

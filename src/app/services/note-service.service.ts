@@ -44,6 +44,7 @@ export class NoteServiceService {
     updateNote(data,id) {
       let note = JSON.parse(localStorage.getItem('note'));
       console.log(note);
+      
        note[id].title = data.title;
        note[id].desc = data.desc;
       return localStorage.setItem('note',JSON.stringify(note));
