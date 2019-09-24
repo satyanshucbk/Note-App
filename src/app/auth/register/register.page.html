@@ -3,9 +3,9 @@
     <ion-grid style="padding: 0; margin: 0;">
         <ion-row>
             <ion-col size-sm="12" style="padding: 0; margin: 0;">
-                <div class="auth-header-container">
+                <div class="dashboard-header-container">
                     <!-- <ion-icon slot="start" (click)="backToLogin()" class="header-icon" name="arrow-round-back"></ion-icon> -->
-                    <p class= "text-center page-header-txt" style="top: 16%; left:41%; ">Sign Up</p>
+                    <p class= "text-center page-header-txt" style="top: -17%; left:41%;">Sign Up</p>
                 </div>
             </ion-col>
         </ion-row>
@@ -16,7 +16,8 @@
             <div class="justify-content-center login-container">
                 <div class="form-group ion-margin-bottom input-container">
                     <ion-grid class="input-wrapper">
-                        <ion-icon class="input-icon" name="person"></ion-icon>
+                        <!-- <ion-icon class="input-icon" name="person"></ion-icon> -->
+                        <img src="assets/icon/man-user.png" class="icon">
                         <input formControlName="userName" class="form-control input-txt" type="text" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
                     </ion-grid>
                 </div>
@@ -26,7 +27,8 @@
         
                 <div class="form-group ion-margin-bottom input-container">
                     <ion-grid class="input-wrapper">
-                        <ion-icon class="input-icon" name="mail"></ion-icon>
+                        <!-- <ion-icon class="input-icon" name="mail"></ion-icon> -->
+                        <img class="icon" src="assets/icon/email.png">
                         <input formControlName= "email" class="form-control input-txt" type="email" placeholder="Email-id" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                     </ion-grid>
                 </div>
@@ -37,10 +39,11 @@
                 
                 <div class="form-group ion-margin-bottom input-container">
                     <ion-grid class="input-wrapper">
-                        <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon>
+                        <!-- <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon> -->
+                        <img class="icon" src="assets/icon/lock.png" >
                         <input formControlName= "password" class="form-control input-txt" [type]="showPassword ? 'text' : 'password'" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
                         <button ion-button class="pass-btn" (click)="onPasswordToggle('password')">
-                            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="input-icon" ></ion-icon>
+                            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="input-icon" style="color: #F2A211" ></ion-icon>
                         </button>
                         </ion-grid>
                 </div>
@@ -52,10 +55,11 @@
                 </div> 
                 <div class="form-group ion-margin-bottom input-container">
                     <ion-grid class="input-wrapper">
-                        <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon>
+                        <!-- <ion-icon class="input-icon" style="font-size: 1.7em;" name="lock"></ion-icon> -->
+                        <img class="icon" src="assets/icon/lock.png" >
                         <input formControlName="confirmPassword" class="form-control input-txt" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" >
                         <button ion-button class="pass-btn" (click)="onPasswordToggle('confirmPassword')">
-                            <ion-icon [name]="showConfirmPassword ? 'eye-off' : 'eye'" class="input-icon" ></ion-icon>
+                            <ion-icon [name]="showConfirmPassword ? 'eye-off' : 'eye'" class="input-icon" style="color: #F2A211"></ion-icon>
                         </button>
                     </ion-grid>
                 </div> 

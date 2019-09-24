@@ -39,8 +39,8 @@ button:focus {
     background: linear-gradient(to right, #f1c40f, #f39c12);
     text-align: center;
     color: #ffffff;
-    padding-bottom: 21%;
     
+    height: 230px;
 }
 .login-container{
     margin-top: 9%;
@@ -53,24 +53,28 @@ button:focus {
 .login-header-txt{color: #fffffe; 
     font-size: 1.3em; 
     font-weight: 600; 
-    margin-bottom: 0; position: absolute;
-    bottom: 15%;
-    right: 43%;
+    margin-bottom: 0;
+    padding: 15px;
 }
-.logo{height: 100px; width: 100px; margin-top: 35px; }
+.logo{   
+     height: 80px;
+    width: 80px;
+    margin-top: 30px; 
+}
 .logo-header-txt{color: #fffffe; margin-top: -4px; font-size: 1.3em; font-weight: 400; position: relative;}
 .header-txt{color: #fffffe; position: absolute; top: 70%; left: 43%; font-size: 1.3em; font-weight: 600;}
 .input-container{
     border: 1px solid #A09A97;
     border-radius: 500px;
     width: 100%;
-    height: 4em;
+    height: 3.7em;
     background-color: #ffffff;
     box-shadow: 0px 1px 3px 0px;
 }
 .input-wrapper{ display: flex; padding: 15px;}
-.input-icon{color: black; font-size: 1.5em; padding:5px;}
-.input-txt{ border: none; width: 100%; height: 35px; font-size: 1.2em; }
+.icon{ padding:3px; margin-right: 5px;}
+.input-icon{color: black; font-size: 1.7em; padding:3px;}
+.input-txt{ border: none; width: 100%; height: 24px; font-size: 1.2em; }
 
 .error-messages{
     font-size: 0.8em;
@@ -81,7 +85,7 @@ button:focus {
 .link-txt{color: black; font-weight: 600;}
 .round-button{
     width: 100%;
-    height: 4em;
+    height: 3.7em;
     border-radius: 500px;
     background: linear-gradient(to right, #f1c40f, #f39c12);
     line-height: 0%;
@@ -95,8 +99,8 @@ button:focus {
     color: #ffffff;
     position: relative;
 }
-.header-icon{position: absolute; top: 35px; left: 15px; color: #ffffff; font-size: 2em; font-weight: 700;}
-.page-header-txt{font-size: 1.3em; font-weight: 600; position: absolute; top: 10%; left: 35%;}
+.header-icon{position: absolute; top: 14px; left: 0; color: #ffffff; font-size: 2em; font-weight: 700;}
+.page-header-txt{font-size: 1.3em; font-weight: 600; position: absolute; top: -10%; left: 35%;}
 .info-txt{color: #7d7a7afc; font-size: 0.9em; }
 
 
@@ -135,8 +139,16 @@ button:focus {
 /**********DASHBOARD Style************/
 
 .dashboard-header-container {
-    height: 100px;
+    height: 55px;
     background: linear-gradient(to right, #f1c40f, #f39c12);
+    background-attachment: fixed;
+    color: #ffffff;
+    position: relative;
+    z-index: 999;
+}
+.dashboard-container{
+    height: 55px;
+    background: #f8e087;
     background-attachment: fixed;
     color: #ffffff;
     position: relative;
@@ -199,20 +211,31 @@ button:focus {
   .list-card-title{
       font-size: 1.3em;
       margin: 10px;
+      text-align: center;
+  }
+  .card-content{
+    min-height: 120px;
+    max-height: 150px;
+    padding-top: 0%;
+    padding-bottom: 0%;
   }
   .list-card-content{
-    
+
+    display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
     line-height: 1.2em;
-    max-width: 190px;
-    max-height: 5.5em; 
-    padding: 6%;
+    // max-width: 190px;
+    // max-height: 5.5em; 
+    
     text-align: justify;
-    margin: 0%;
-    padding-top: 0%!important;
+    // margin: 0%;
+    // padding-top: 0%!important;
     text-overflow: ellipsis!important;
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // position: relative;
     word-spacing: normal!important;
   }
 //   .list-card-content::before{

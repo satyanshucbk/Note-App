@@ -53,22 +53,22 @@ export class ForgotPasswordPage implements OnInit {
     this.emailData =  {
       'email': this.forgotForm.value.email,
     }
-    localStorage.setItem("emailVerification", JSON.stringify(this.emailData));
-    console.log(JSON.parse(localStorage.getItem("emailVerification")));
+    
 
-    if (this.emailData.email){
-      this.router.navigate(['email-verification']);
-    }else{
+    if (this.forgotForm.invalid){
       const alert = await this.alertController.create({
         header: 'Alert',
-        message: 'Email-Id field can`t be blank.',
+        message: 'Please fill the correct details.',
         buttons: ['OK']
       });
   
       await alert.present();
+     
+    }else{
+      localStorage.setItem("emailVerification", JSON.stringify(this.emailData));
+      console.log(JSON.parse(localStorage.getItem("emailVerification")));
+      this.router.navigate(['email-verification']);
     }
-
-   
   }
 
 }

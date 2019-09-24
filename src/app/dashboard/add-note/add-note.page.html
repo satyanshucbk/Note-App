@@ -1,17 +1,13 @@
-<ion-header>
-    <ion-toolbar>
+<ion-header style="margin: 0%; padding:0%;">
+    
         <div class="dashboard-header-container" style="color: #ffffff">
             <ion-icon (click)="back()" slot="start" class="header-icon" name="arrow-round-back"></ion-icon>
-            <p class= "text-center page-header-txt" style="top: 16%!important; left: 40% ">Add Note</p>
-            <button (click)="saveNote()"  *ngIf="addNoteForm.valid" style="background: none; border:none;"  class="dashboard-add-icon"><img src="assets/icon/hdpi/ic_check_hdpi.png" height="25px;" width="25px;"></button>
+            <p class= "text-center page-header-txt">Add Note</p>
+            <button (click)="saveNote()" slot="end"  *ngIf="addNoteForm.valid" style="background: none; border:none; top: 25%"  class="dashboard-add-icon"><img src="assets/icon/hdpi/ic_check_hdpi.png" height="25px;" width="25px;"></button>
         </div>
-    </ion-toolbar>
-  </ion-header>
-
-
+</ion-header>
 <ion-content ion-fixed>
-     
-        <form [formGroup]= "addNoteForm">
+     <form [formGroup]= "addNoteForm">
             <ion-row class="ion-align-items-center">
                 <ion-col size-sm="8" offset-md="2" >
                 <div class="addNote-container">
