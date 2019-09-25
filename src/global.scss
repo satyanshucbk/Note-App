@@ -149,9 +149,7 @@ button:focus {
 .dashboard-container{
     height: 55px;
     background: #f8e087;
-    background-attachment: fixed;
     color: #ffffff;
-    position: relative;
     z-index: 999;
 }
 .dashboard-add-icon{position: absolute; top: 37px; right: 20px;}
@@ -167,21 +165,28 @@ button:focus {
     background: transparent;
     width: 97%;
     height: 97%;}
+.search-box-subheader{
+    background: #f4f4f4;
+    height: 55px;
+    width: 100%;
+}
 
 .searchbar-container{ 
     position: absolute;
-    /* top: 30%; */
-    bottom: 38%;
-    left: 10%;
-    width: 80%;
-    border-bottom: 1px solid white;
+    color: #7d7d7d;
+    top : 17%;
+    left: 3%;
+    height: 35px;
+    width: 75%;
+    border: 1px solid #d9d9d9;
 }
 .searchbar-icon{
-    font-size: 1.3em;
+    font-size: 1.5em;
     position: absolute;
     /* top: 40%; */
+    color: #7d7d7d;
     bottom: 7%;
-    left: 4%;
+    left: 1%;
 }
 .searchbar-input{
     border: none;
@@ -191,9 +196,10 @@ button:focus {
     left: 13%;
     width: 80;
     width: 85%;
+    color: #7d7d7d;
     font-size: 1.2em;
 }
-.searchbar-input::placeholder{color: white;}
+.searchbar-input::placeholder{color: #7d7d7d;}
 .list-wrappper{ max-height: 140%; min-height: 100%; width: 50%; }
 .list-card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -211,7 +217,7 @@ button:focus {
   .list-card-title{
       font-size: 1.3em;
       margin: 10px;
-      text-align: center;
+
   }
   .card-content{
     min-height: 120px;

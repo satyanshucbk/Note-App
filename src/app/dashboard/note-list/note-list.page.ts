@@ -46,11 +46,34 @@ export class NoteListPage implements OnInit {
   }
 
 
-  deleteNote(key) {
-    console.log(key)
-  this.noteService.deleteNote(key);
-  this.getList();
-   
+  async deleteNote(key) {
+  // console.log(key)
+  // this.noteService.deleteNote(key);
+  // this.getList();
+  
+  const alert = await this.alertController.create({
+    header: 'Confirm Delete',
+    message: 'Do you confirm to delete?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Yes',
+        handler: () => {
+          console.log(key)
+          this.noteService.deleteNote(key);
+          this.getList();
+        }
+      }
+    ]
+  });
+  await alert.present();
+  
 }
  updateNote(key){
   this.router.navigate(['update-note',key]);
@@ -60,6 +83,10 @@ export class NoteListPage implements OnInit {
   let sortNote = this.noteService.sortNote(option);
   localStorage.setItem('note',JSON.stringify(sortNote));
   this.getList();
+  }
+
+  logout() {
+    this.router.navigate(['login']);
   }
 
   

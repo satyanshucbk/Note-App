@@ -1,37 +1,54 @@
 <ion-header style="margin: 0%; padding:0%;">
-     <div class="dashboard-header-container">
-            
-        </div>
+    <div class="dashboard-header-container" style="z-index: 0">
+        <button style="background: none; float: right; padding: 11px; margin-right: 5px;" (click)="logout()">
+            <img src="assets/icon/logout.png" height="30px"  width="30px">
+        </button>
+    </div>
   </ion-header>
 
 
   <ion-content>
 
+<ion-row>
+    <ion-col size-sm="12" style="margin: 0%; padding:0%;">
+        <div class="search-box-subheader">
+            <ion-grid class="searchbar-container">
+                <ion-icon class="searchbar-icon" name="search"></ion-icon>
+                <input [(ngModel)]="searchText" class="searchbar-input" type="text" placeholder="Search notes"> 
+            </ion-grid>
+        </div>
+<!-- 
+        <div class="dropdown">
+            <button type="button" data-toggle="dropdown">Dropdown Example
+            <img src="assets/icon/sort-button.png" height="30px"  width="30px"></button>
+            <ul class="dropdown-menu">
+                <li value="new">New Notes</li>
+                <li value="old">Old Notes</li>
+            </ul>
+        </div> -->
 
-    <ion-row style="margin: 0%; padding:0%;">
-        <ion-col size-sm="12" style="margin: 0%; padding:0%;">
-            <div class="dashboard-container">
-                <ion-grid class="searchbar-container">
-                    <ion-icon class="searchbar-icon" name="search"></ion-icon>
-                    <input [(ngModel)]="searchText" class="searchbar-input" type="text" placeholder="Search notes"> 
-                </ion-grid>
-            </div>
+        <ion-select (ionChange) = "sortBydate($event.target.value)" style="background: none; position: absolute; top: 20%; right: 3%; ">
+            <ion-select-option value="new">Newest First</ion-select-option>
+            <ion-select-option value="old">Oldests First</ion-select-option>
+        </ion-select>
+        <!-- <select>
+                <img src="assets/icon/sort-button.png" height="30px"  width="30px">
+            <option value="new">New</option>
+            <option value="old">Old</option>
+        </select>         -->
+    </ion-col>
+  </ion-row>
             
-        </ion-col>
-    </ion-row>
-    <ion-row>
+    <!-- <ion-row>
         <ion-col size-sm="12">
          <div class="sort-option">
-                <ion-item>
-                    <ion-label>Sorting</ion-label>
                     <ion-select okText="Ok" cancelText="Dismisss" (ionChange) = "sortBydate($event.target.value)">
                         <ion-select-option value="new">Newest First</ion-select-option>
                         <ion-select-option value="old" >Oldests First</ion-select-option>
                     </ion-select>
-                </ion-item>
             </div>
         </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-grid style="margin: 5px;">
         <ion-row>
                 <ion-col size="6" *ngFor="let item of noteList | searchfilter : searchText  ; let i=index; ">    
@@ -49,6 +66,6 @@
         </ion-row>
     </ion-grid>
     <div class="add-note-wrapper">
-        <button (click)="addNote()" style="background: none; position: absolute; bottom: 2%; right: 1%;"><img class="add-note-img" src="assets/icon/hdpi/ic_add_hdpi.png" height="70px" width="70px;"></button>
+        <button (click)="addNote()" style="background: none; position: fixed; bottom: 0px; right: 0px;"><img class="add-note-img" src="assets/icon/hdpi/ic_add_hdpi.png" height="70px" width="70px;"></button>
     </div>
 </ion-content>

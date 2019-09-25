@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '../../_helper/must-match.validator';
 import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reset-password',
@@ -23,7 +24,8 @@ export class ResetPasswordPage implements OnInit {
               private authService: AuthService,
               public formBuilder: FormBuilder,
               private location: Location,
-              public alertController: AlertController) { }
+              public alertController: AlertController,
+              public toastController: ToastController) { }
 
           public back(): void {
             this.location.back();
@@ -32,7 +34,7 @@ export class ResetPasswordPage implements OnInit {
   ngOnInit() {
     this.resetPassForm = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
-      confirmPassword: ['', Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]
+      confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]]
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
@@ -62,11 +64,18 @@ export class ResetPasswordPage implements OnInit {
 
     localStorage.setItem("resetPassData", JSON.stringify(this.resetPassData) );
     console.log(JSON.parse(localStorage.getItem("resetPassData")));
+    const toast = await this.toastController.create({
+      message: 'Your password has been successfully changed.',
+      color:'dark',
+      duration: 1000
+    });
+    toast.present();
     this.router.navigate(['login']);
     }
   }
 
   public onPasswordToggle(type:string): void {
+
     if(type=='confirmPassword'){
      this.showConfirmPassword = !this.showConfirmPassword;
     }else{

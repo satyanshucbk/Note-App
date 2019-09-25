@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '../../_helper/must-match.validator';
 import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterPage implements OnInit {
   public showPassword: boolean = false;
   public showConfirmPassword: boolean = false;
   
-  constructor(public router: Router, public formBuilder: FormBuilder,public alertController: AlertController) 
+  constructor(public router: Router, public formBuilder: FormBuilder,public alertController: AlertController,
+              public toastController: ToastController) 
   { }
 
   ngOnInit() {
@@ -26,7 +28,7 @@ export class RegisterPage implements OnInit {
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
-      confirmPassword: ['', Validators.required,Validators.minLength(6),Validators.maxLength(12), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]
+      confirmPassword: ['', [Validators.required,Validators.minLength(6),Validators.maxLength(12), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]]
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
@@ -59,7 +61,13 @@ export class RegisterPage implements OnInit {
 
       localStorage.setItem("userData", JSON.stringify(this.userData) );
       console.log(JSON.parse(localStorage.getItem("userData")));
-      this.router.navigate(['email-verification']);
+      const toast = await this.toastController.create({
+        message: 'Your account has created successfully.',
+        color:'dark',
+        duration: 1000
+      });
+      toast.present();
+      this.router.navigate(['login']);
     }
     
   }

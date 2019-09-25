@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Location } from '@angular/common';
 import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,7 +27,8 @@ export class ForgotPasswordPage implements OnInit {
               public router: Router,
               private authService: AuthService,
               private location: Location,
-              public alertController: AlertController) { 
+              public alertController: AlertController,
+              public toastController: ToastController) { 
     
     this.forgotForm = this.formBuilder.group({
       email: new FormControl('',Validators.compose([
@@ -67,6 +69,12 @@ export class ForgotPasswordPage implements OnInit {
     }else{
       localStorage.setItem("emailVerification", JSON.stringify(this.emailData));
       console.log(JSON.parse(localStorage.getItem("emailVerification")));
+      const toast = await this.toastController.create({
+        message: 'OTP has successfully delivered on your email id.',
+        color:'dark',
+        duration: 1000
+      });
+      toast.present();
       this.router.navigate(['email-verification']);
     }
   }
