@@ -13,6 +13,7 @@ export class UpdateNotePage implements OnInit {
 
   updateForm: FormGroup;
   updateData: any;
+  noteTime: any;
 
   constructor(private authService: AuthService,private router : Router,
               private location: Location, private route: ActivatedRoute,
@@ -21,7 +22,7 @@ export class UpdateNotePage implements OnInit {
                 this.updateForm = this.formBuilder.group({
                   'title': ['', Validators.required],
                   'id': [''],
-                   'description' : ['',Validators.required]  
+                   'description' : ['',Validators.required], 
                 })
               }
 
@@ -30,12 +31,12 @@ export class UpdateNotePage implements OnInit {
       this.location.back();
     }
   ngOnInit() {
+   
     this.route.params.subscribe(params => {
       let id = +params.id;
      let note = this.noteService.editNote(id);
-     
+     this.noteTime = note.todaysDate;
      this.updateForm.patchValue({id:id, title : note.title,description :note.desc})
-    
     });
   }
 

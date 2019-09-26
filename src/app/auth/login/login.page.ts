@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ export class LoginPage implements OnInit {
 
   constructor(public router: Router, 
               public formBuilder: FormBuilder,
-              public alertController: AlertController
+              public alertController: AlertController,
+              public loadingController: LoadingController
               ) {
                 this.loginForm = this.formBuilder.group({
                   email: new FormControl('',Validators.compose([
@@ -70,6 +72,16 @@ export class LoginPage implements OnInit {
       await alert.present();
     }else{
       
+      const loading = await this.loadingController.create({
+        message: 'Loading',
+        duration: 2000
+      });
+      await loading.present();
+  
+      const { role, data } = await loading.onDidDismiss();
+  
+      console.log('Loading dismissed!');
+
       localStorage.setItem("loginData", JSON.stringify(this.loginData));
       console.log(JSON.parse(localStorage.getItem("loginData")));
       this.router.navigate(['note-list']);

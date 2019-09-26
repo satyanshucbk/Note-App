@@ -1,10 +1,26 @@
 <ion-header style="margin: 0%; padding:0%;">
+    <ion-row class="form-group dashboard-header-container">
+        <ion-col size-sm="12">
+            <ion-row>
+            <ion-col size-sm="1">
+                <ion-icon (click)="back()" class="header-back" name="arrow-round-back"></ion-icon>
+            </ion-col>
+            <ion-col size-sm="10">
+                <h5 class="header-name">Add Note</h5>
+            </ion-col>
+            <ion-col size-sm="1">
+                <button (click)="saveNote()" *ngIf="addNoteForm.valid"  class="header-save"  ><img src="assets/icon/hdpi/ic_check_hdpi.png" height = "25px" width= "25px" ></button>
+            </ion-col>
+            </ion-row>
+        </ion-col>
+    </ion-row>    
+        
     
-        <div class="dashboard-header-container" style="color: #ffffff">
+    <!-- <div class="dashboard-header-container" style="color: #ffffff">
             <ion-icon (click)="back()" slot="start" class="header-icon" name="arrow-round-back"></ion-icon>
             <p class= "text-center page-header-txt">Add Note</p>
-            <button (click)="saveNote()" slot="end"  *ngIf="addNoteForm.valid" style="background: none; border:none; top: 25%"  class="dashboard-add-icon"><img src="assets/icon/hdpi/ic_check_hdpi.png" height="25px;" width="25px;"></button>
-        </div>
+            <button (click)="saveNote()" slot="end"  style="background: none; border:none; top: 25%; right: 5px;"  class="dashboard-add-icon"><img src="assets/icon/hdpi/ic_check_hdpi.png" height="25px;" width="25px;"></button>
+        </div> -->
 </ion-header>
 <ion-content ion-fixed>
      <form [formGroup]= "addNoteForm">

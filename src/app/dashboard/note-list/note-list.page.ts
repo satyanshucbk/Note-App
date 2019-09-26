@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { NoteServiceService } from '../../services/note-service.service';
 import { AlertController } from '@ionic/angular';
-
-
-
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-note-list',
@@ -18,17 +18,49 @@ export class NoteListPage implements OnInit {
   filteredNotes: [];
   searchText : any;
   options : any;
+  subscribe: any;
 
  addNote() {
     this.router.navigate(['add-note']);
   }
 
   
+
   constructor(public router: Router,
               private noteService: NoteServiceService,
               public alertController: AlertController,
-              ) { }
-
+              public platform: Platform,
+              private splashScreen: SplashScreen,
+              private statusBar: StatusBar
+              ) 
+              {
+                
+               
+                this.platform.backButton.subscribe(async () => {
+                 
+                  if (this.router.isActive('/note-list', true) && this.router.url === '/note-list') {
+                    const alert = await this.alertController.create({
+                      header: 'Do you want to close app?',
+                      buttons: [
+                        {
+                          text: 'Cancel',
+                          role: 'cancel'
+                        }, {
+                          text: 'Close',
+                          handler: () => {
+                          navigator['app'].exitApp();
+                          }
+                        }
+                      ]
+                    });
+                    
+                    await alert.present();
+                  } else{
+                    history.back();
+                  }
+                });
+                this.initializeApp();
+              }
 
 
   ngOnInit() {
@@ -89,5 +121,26 @@ export class NoteListPage implements OnInit {
     this.router.navigate(['login']);
   }
 
-  
+  initializeApp() {
+   
+  if (this.router.isActive('/note-list', true) && this.router.url === '/note-list'){
+   
+    this.platform.ready().then(() => {
+      
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+        document.addEventListener('backbutton', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          console.log('Can`t go back');
+        }, false);
+      });
+     
+      this.statusBar.styleDefault();
+    });
+  }
+     
+  }
+
 }
