@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'note-list', loadChildren: './dashboard/note-list/note-list.module#NoteListPageModule' },
   { path: 'add-note', loadChildren: './dashboard/add-note/add-note.module#AddNotePageModule' },
   { path: 'update-note/:id', loadChildren: './dashboard/update-note/update-note.module#UpdateNotePageModule' },
+  // { path: 'modal', loadChildren: './sorting-modal/modal/modal.module#ModalPageModule' },
 ];
 
 @NgModule({

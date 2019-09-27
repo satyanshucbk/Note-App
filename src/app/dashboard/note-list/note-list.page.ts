@@ -5,6 +5,10 @@ import { AlertController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+// import { PopoverController } from '@ionic/angular';
+// import { SortComponent } from '../../modal/sort/sort.component';
+
+
 
 @Component({
   selector: 'app-note-list',
@@ -31,11 +35,12 @@ export class NoteListPage implements OnInit {
               public alertController: AlertController,
               public platform: Platform,
               private splashScreen: SplashScreen,
-              private statusBar: StatusBar
+              private statusBar: StatusBar,
+              // public popoverController: PopoverController,
               ) 
               {
-                
-               
+
+
                 this.platform.backButton.subscribe(async () => {
                  
                   if (this.router.isActive('/note-list', true) && this.router.url === '/note-list') {
@@ -142,5 +147,20 @@ export class NoteListPage implements OnInit {
   }
      
   }
+
+  
+  // async presentPopover(ev: any) {
+  //   const popover = await this.popoverController.create({
+  //     component: SortComponent,
+  //     event: ev,
+  //     translucent: true,
+  //     showBackdrop: true,
+  //   });
+  //   return await popover.present();
+  // }
+
+  // // async DismissClick() {
+  // //   await this.popoverController.dismiss();
+  // //     }
 
 }

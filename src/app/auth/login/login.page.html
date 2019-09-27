@@ -35,7 +35,7 @@
                 <ion-grid class="input-wrapper">
                   <!-- <ion-icon class="input-icon"  name="lock"></ion-icon> -->
                   <img class="icon" src="assets/icon/lock.png" >
-                  <input formControlName="password"  [type]="showPassword ? 'text' : 'password'" clearOnEdit="false" placeholder="Enter your password"  class="input-txt">
+                  <input formControlName="password"  type="submit" [type]="showPassword ? 'text' : 'password'" clearOnEdit="false" placeholder="Enter your password"  class="input-txt">
                   <button ion-button class="pass-btn" (click)="onPasswordToggle()">
                     <ion-icon class="input-icon" [name]="showPassword ? 'eye-off' : 'eye'" style="color: #F2A211" class="input-icon" ></ion-icon>
                   </button>

@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CustomPipe } from '../../pipe/custom.pipe';
 import { NoteListPage } from './note-list.page';
+// import { SortComponent } from '../../modal/sort/sort.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     // IonicModule.forRoot({hardwareBackButton: false}),
     RouterModule.forChild(routes)
   ],
+  entryComponents: [],
   declarations: [NoteListPage,CustomPipe ]
 })
 export class NoteListPageModule {}
